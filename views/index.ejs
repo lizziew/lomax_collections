@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Lomax Demo</title>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+	<link rel='stylesheet' href='//www.simile-widgets.org/styles/common.css' type='text/css' />
+
+	<link href="/javascripts/collections.json" type="application/json" rel="exhibit/data" />
+	<link href="/javascripts/schema.js" type="application/json" rel="exhibit/data" />
+
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+	<script src="//api.simile-widgets.org/exhibit/current/exhibit-api.js"></script>
+	<link rel="exhibit-extension" type="text/javascript" href="//api.simile-widgets.org/exhibit/current/extensions/time/time-extension.js"/>
+	<link rel="exhibit-extension" href="//projects.csail.mit.edu/exhibit/api/extensions/flotr/flotr-extension.js"/>
+
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  
+	<style>
+	  .logo {
+	  text-align: center
+	  }
+	  .lens-table {
+	  width: 100%
+	  }
+	  .lens-table td {
+	  padding: 10px
+	  }
+	</style>
+
+  </head>
+  <body>
+		<nav class="navbar navbar-inverse">
+	      <div class="container-fluid">
+	        <div class="navbar-header">
+	          <a class="navbar-brand" href="#">Lomax Demo -- Collections</a>
+	        </div>
+	      </div>
+	    </nav>
+	    <div class="row">
+	      <div class="col-md-1"></div>
+	      <div class="col-md-10">
+	        <div data-ex-role="viewPanel">
+	          <div data-ex-role="view" data-ex-view-class="Timeline" data-ex-start=".StartYear" data-ex-color-key=".EndYear" data-ex-top-band-unit="year" data-ex-top-band-pixels-per-unit="100" data-ex-bottom-band-pixels-per-unit="300"> 
+	            <div data-ex-role="lens">
+	            	<span data-ex-content=".Description"></span>
+	            </div>
+	          </div>
+
+	          <div data-ex-role="view" data-ex-view-class="Tabular" data-ex-columns=".Name,.StartYear,.EndYear,.Description" data-ex-column-labels="Name,Start Year,End Year,Description"></div>
+	        </div>
+	      </div>
+	      <div class="col-md-1"></div>
+	    </div>
+
+
+  </body>
+  <script>
+
+  </script> 
+</html>
