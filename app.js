@@ -37,24 +37,26 @@ app.use(function(req, res, next) {
 });
 
 //***
-/*var connection = mysql.createConnection({
-   host: 'localhost',
-   user: 'root',
-   password: '54321'
-});
+// var connection = mysql.createConnection({
+//    host: 'localhost',
+//    user: 'root',
+//    password: '54321'
+// });
 
-connection.connect();
+// connection.connect();
 
-connection.query('select * from lomax_video.sessions;', function(err, results, fields) {
-    if(err) throw err;
+// var query = 'select * from lomax_video.sessions;';
 
-    fs.writeFile('table.json', JSON.stringify(results), function (err) {
-      if (err) throw err;
-      console.log('Saved!');
-    });
+// connection.query(query, function(err, results, fields) {
+//     if(err) throw err;
 
-    connection.end();
-});*/ 
+//     fs.writeFile('table.json', JSON.stringify(results), function (err) {
+//       if (err) throw err;
+//       console.log('Saved!');
+//     });
+
+//     connection.end();
+// });
 
 // error handlers
 
