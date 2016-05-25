@@ -1,7 +1,7 @@
 import csv
 
-with open('/Users/elizabethwei/Desktop/input.csv','r') as csvinput:
-    with open('/Users/elizabethwei/Desktop/output.csv', 'w') as csvoutput:
+with open('/Users/elizabethwei/code/exhibit_lomax/public/javascripts/input.csv','r') as csvinput:
+    with open('/Users/elizabethwei/code/exhibit_lomax/public/javascripts/output.csv', 'w') as csvoutput:
         writer = csv.writer(csvoutput, lineterminator='\n')
         reader = csv.reader(csvinput)
 
