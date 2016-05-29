@@ -1,40 +1,51 @@
 {
     "types": {
-        "Video": {
-            "pluralLabel": "Videos"
+        "Song": {
+            "pluralLabel": "Songs"
+        },
+        "Participant": {
+        	"pluralLabel": "Participants"
+        },
+        "Show": {
+        	"pluralLabel": "Shows"
+        },
+        "Station": {
+        	"pluralLabel": "Stations"
         }
     },
     "properties": {
-        "clipname": {
+        "songname": {
             "valueType": "text"
         },
-        "namefirst": {
+        "tracknote": {
             "valueType": "text"
         },
-        "namelast": {
+        "duration": {
+            "valueType": "number"
+        },
+        "topic": {
             "valueType": "text"
         },
-        "setting": {
-            "valueType": "text"
-        },
-        "ppl": {
-            "valueType": "text",
-            "label":     "city"
-        },
-        "sessionname": {
-            "valueType": "text"
-        },
-        "sessionnotes": {
+        "showtitle": {
             "valueType": "text"
         },
         "startdate": {
-            "valueType": "date"
+            "valueType": "text"
+        },
+        "station": {
+            "valueType": "text"
+        },
+        "showdescription": {
+            "valueType": "text"
         }, 
-        "collection": {
+        "participantname": {
         	"valueType": "text"
         },
-        "latlng": {
+        "shownote": {
         	"valueType": "text"
+        },
+        "timelinedate": {
+        	"valueType": "date"
         }
     }
 }

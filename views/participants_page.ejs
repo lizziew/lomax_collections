@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Lomax Radio</title>
+		<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+		<!--Stylesheets--> 
+		<link rel='stylesheet' href='//www.simile-widgets.org/styles/common.css' type='text/css' />
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+		<!--Data--> 
+		<link href="/javascripts/schema.js" type="application/json" rel="exhibit/data" />
+		<link href="/javascripts/output.csv" type="text/csv" rel="exhibit/data" data-ex-properties="songname,tracknote,duration,topic,showtitle,startdate,station,showdescription,label,shownote,timelinedate"/>
+
+		<!--Externals--> 
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+		<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+		<script src="http://api.simile-widgets.org/exhibit/3.1.0rc/exhibit-api.js"></script>
+
+		<!--Extensions--> 	
+		<link rel="exhibit-extension" type="text/javascript" href="//api.simile-widgets.org/exhibit/current/extensions/time/time-extension.js"/>
+		<style>
+		    .exhibit-tileView-body { list-style: none; }
+		    .exhibit-collectionView-group-count { display: none; }
+		    div.song-lens {
+		        background: #f2f2f2;
+		        border-radius: 25px;
+		    }
+		    div.participant-thumbnail {
+            float:      left;
+            width:      21em;
+            height:     30em;
+            border:     1px solid #d3d3d3;
+            padding:    1em;
+            margin:     0.5em;
+            text-align: center;
+            border-radius: 15px;
+        }
+		</style>
+	</head>
+  	<body>
+		<div data-ex-role="coder" data-ex-coder-class="Color" id="stations-colors" style="display: none;">
+			<span data-ex-color="#00C8F8">BBC (New York)</span>
+			<span data-ex-color="#59C4C5">Columbia Broadcasting System</span>
+			<span data-ex-color="#FFC33C">Mutual Broadcasting Company</span>
+			<span data-ex-color="#FF4C65">National Broadcasting Company</span>
+			<span data-ex-color="gray"  data-ex-case="others">Other stations</span>
+			<span data-ex-color="white" data-ex-case="mixed">Multiple stations</span>
+			<span data-ex-color="black" data-ex-case="missing">No station</span>
+		</div>
+		<nav class="navbar navbar-default">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="#" id="home_button">Lomax Radio Database</a>
+				</div>
+				<ul class="nav navbar-nav">
+					<li><a href="#" id="home_button">Home</a></li>
+					<li><a href="#" id="songs_button">Songs</a></li>
+					<li><a href="#" id="shows_button">Shows</a></li>
+					<li class="active"><a href="#" id="participants_button">Participants</a></li>
+				</ul>
+			</div>
+		</nav>
+	    <div class="row">
+	    	<div class="col-md-1"></div>
+			<div class="col-md-3" style="background-color: #f2f2f2; border-radius: 15px; padding: 15px;">
+				<div style="padding: 15px; border-style: solid; border-width: thin; border-color: #cccccc;">
+					<div><h4 align="center"><i>Click</i> on a name to search for a participant on Google.</h4></div>
+					<div><h4 align="center"><i>Sort</i> by date, name, show, station.</h4></div>
+					<div><h4 align="center"><i>Filter</i> by station, show, and topic.</h4></div>
+				</div>
+				<div data-ex-role="facet" data-ex-facet-label="Filter by Station" data-ex-expression=".station" data-ex-color-coder="stations-colors" data-ex-show-missing="false" data-ex-height="120px"></div>
+				<div data-ex-role="facet" data-ex-facet-label="Filter by Show" data-ex-expression=".showtitle" data-ex-height="250px"></div>
+				<div data-ex-role="facet" data-ex-facet-label="Filter by Topic" data-ex-facet-class="Cloud" data-ex-expression=".topic" data-ex-height="250px"></div>
+			</div>
+	  		<div class="col-md-7">
+	        	<div data-ex-role="viewPanel">  
+				<div data-ex-role="view"
+					data-ex-view-class="Thumbnail"
+					data-ex-show-all="true"
+					data-ex-orders=".startdate"
+					data-ex-show-toolbox="false"
+					data-ex-show-summary="false"
+					data-ex-possible-orders=".label, .station, .showtitle">
+					<div data-ex-role="lens" class="participant-thumbnail" style="display: none;">
+						<div data-ex-select=".station">
+							<div data-ex-case="BBC (New York)" style="color: #00C8F8;">
+						  		<u><b><div><a data-ex-content=".label" data-ex-href-subcontent="http://www.google.com/search?q={{.label}}" style="color: #00C8F8;"></a></div></b></u>
+						  		<div><p data-ex-content="concat('Shows: ', .showtitle)"></p></div>
+						  		<i><div><p data-ex-content="concat('Topics: ', .topic)"></p></div></i> 
+							</div>
+							<div data-ex-case="Columbia Broadcasting System" style="color: #59C4C5;">
+						  		<u><b><div><a data-ex-content=".label" data-ex-href-subcontent="http://www.google.com/search?q={{.label}}" style="color: #59C4C5;"></a></div></b></u>
+						  		<div><p data-ex-content="concat('Shows: ', .showtitle)"></p></div>
+						  		<i><div><p data-ex-content="concat('Topics: ', .topic)"></p></div></i> 
+							</div>
+							<div data-ex-case="Mutual Broadcasting Company" style="color: #FFC33C;">
+						  		<u><b><div><a data-ex-content=".label" data-ex-href-subcontent="http://www.google.com/search?q={{.label}}" style="color: #FFC33C;"></a></div></b></u>
+						  		<div><p data-ex-content="concat('Shows: ', .showtitle)"></p></div>
+						  		<i><div><p data-ex-content="concat('Topics: ', .topic)"></p></div></i> 
+							</div>
+							<div data-ex-case="National Broadcasting Company" style="color: #FF4C65;">
+						  		<u><b><div><a data-ex-content=".label" data-ex-href-subcontent="http://www.google.com/search?q={{.label}}" style="color: #FF4C65;"></a></div></b></u>
+						  		<div><p data-ex-content="concat('Shows: ', .showtitle)"></p></div>
+						  		<i><div><p data-ex-content="concat('Topics: ', .topic)"></p></div></i> 
+							</div>
+						</div>
+					</div>
+				</div>
+
+<!-- 			        <div data-ex-role="view" 
+			        	data-ex-view-class="Tabular" 
+			        	data-ex-show-toolbox="false"
+			        	data-ex-label="Debug" 
+			        	data-ex-columns=".songname,.tracknote,.duration,.topic,.showtitle,.startdate,.station,.showdescription,.label,.shownote,.timelinedate" 
+			        	data-ex-column-labels="songname,tracknote,duration,topic,showtitle,startdate,station,showdescription,participantname,shownote,timelinedate">
+			        </div> -->
+
+            	</div>
+	    	</div>
+		</div>
+		<div class="col-md-1"></div>
+		</div>
+	</body>
+	<script>
+		$('html').on("click","#home_button", function(){
+			$(location).attr("href","/index");
+		});
+
+		$('html').on("click","#songs_button", function(){
+			$(location).attr("href","/songs_page");
+		});
+
+		$('html').on("click","#shows_button", function(){
+			$(location).attr("href","/shows_page");
+		});
+
+		$('html').on("click","#participants_button", function(){
+			$(location).attr("href","/participants_page");
+		});
+	</script>
+</html>

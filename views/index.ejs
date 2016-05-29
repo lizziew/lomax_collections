@@ -1,85 +1,74 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Lomax Video</title>
-    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-    <!--Stylesheets--> 
-	<link rel='stylesheet' href='//www.simile-widgets.org/styles/common.css' type='text/css' />
-	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<head>
+		<title>Lomax Radio</title>
+		<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+		<!--Stylesheets--> 
+		<link rel='stylesheet' href='//www.simile-widgets.org/styles/common.css' type='text/css' />
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 
-	<!--Data--> 
-	<link href="/javascripts/schema.js" type="application/json" rel="exhibit/data" />
-	<link href="/javascripts/output.csv" type="text/csv" rel="exhibit/data" data-ex-properties="label,namefirst,namelast,setting,ppl,sessionname,sessionnotes,startdate,collection,latlng" data-ex-hasColumnTitles="true"/>
+		<!--Data--> 
+		<!--<link href="/javascripts/schema.js" type="application/json" rel="exhibit/data" />
+		<link href="/javascripts/output.csv" type="text/csv" rel="exhibit/data" data-ex-properties="songname,tracknote,duration,topic,label,startdate,station,showdescription,participantname,shownote,timelinedate"/>--> 
 
-	<!--Externals--> 
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-	<script src="//api.simile-widgets.org/exhibit/current/exhibit-api.js"></script>
+		<!--Externals--> 
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+		<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+		<!--<script src="http://api.simile-widgets.org/exhibit/3.1.0rc/exhibit-api.js"></script>-->
 
-	<!--Extensions--> 	
-	<link rel="exhibit-extension" type="text/javascript" href="//api.simile-widgets.org/exhibit/current/extensions/time/time-extension.js"/>
-	<link rel="exhibit-extension" type="text/javascript" href="http://api.simile-widgets.org/exhibit/3.1.0rc/extensions/map/map-extension.js" />
-	<style>
-	  .logo {
-	  text-align: center
-	  }
-	  .lens-table {
-	  width: 100%
-	  }
-	  .lens-table td {
-	  padding: 10px
-	  }
-	</style>
-
-  </head>
-  <body>
-		<nav class="navbar navbar-inverse">
-	      <div class="container-fluid">
-	        <div class="navbar-header">
-	          <a class="navbar-brand" href="#">Lomax Video Database</a>
-	        </div>
-	      </div>
-	    </nav>
+		<!--Extensions--> 	
+		<!-- <link rel="exhibit-extension" type="text/javascript" href="//api.simile-widgets.org/exhibit/current/extensions/time/time-extension.js"/> -->
+		<style>
+		    .exhibit-tileView-body { list-style: none; }
+		    .exhibit-collectionView-group-count { display: none; }
+		    div.song-lens {
+		        background: #f2f2f2;
+		        border-radius: 25px;
+		    }
+		</style>
+	</head>
+  	<body>
+		<nav class="navbar navbar-default">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="#" id="home_button">Lomax Radio Database</a>
+				</div>
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="#" id="home_button">Home</a></li>
+					<li><a href="#" id="songs_button">Songs</a></li>
+					<li><a href="#" id="shows_button">Shows</a></li>
+					<li><a href="#" id="participants_button">Participants</a></li>
+				</ul>
+			</div>
+		</nav>
 	    <div class="row">
-	      <div class="col-md-1"></div>
-	      <div class="col-md-2">
-	      	<div data-ex-role="facet" data-ex-facet-label="Search" data-ex-facet-class="TextSearch"></div>
-	       	<div data-ex-role="facet" data-ex-facet-label="Filter by City" data-ex-facet-class="Cloud" data-ex-expression=".ppl" data-ex-height="250px"></div>
-	       	<div data-ex-role="facet" data-ex-facet-label="Filter by Setting" data-ex-expression=".setting" data-ex-show-missing="false" data-ex-height="500px"></div>
-	      </div>
-	      <div class="col-md-8">
-	        <div data-ex-role="viewPanel">
-	       	 <div data-ex-role="view" data-ex-view-class="Timeline" data-ex-timeline-height="610" data-ex-start=".startdate" data-ex-color-key=".ppl" data-ex-top-band-unit="month" data-ex-top-band-pixels-per-unit="500" data-ex-bottom-band-pixels-per-unit="50"> 
-	            <div data-ex-role="lens" data-ex-itemTypes="Video">
-	            	<h3 align="center" data-ex-content=".label"></h3> 
-	            	<h4 align="center" data-ex-if-exists=".namefirst" class="namefirst">with
-  						<span data-ex-content="concat(.namefirst, .namelast)"></span>
-					</h4>
-	            	<i><h4 align="center"data-ex-if-exists=".setting" class="setting">
-  						<span data-ex-content=".setting"></span>
-					</h4></i> 
-					<p align="center" data-ex-content=".sessionnotes"></p>
-	            	</div>
-	          </div>
+	    	<div class="col-md-1"></div>
+	  		<div class="col-md-10">
+	        	<p>From the late 1939 through the 1950s, Alan Lomax wrote, produced, and hosted radio shows and series for CBS, the Office of War Information, the Mutual Broadcasting Network, the BBC, and RAI Italy. His 1939–41 folk song programs for children and adults on CBS, American Folk Songs, Back Where I Come From and Wellsprings of Music, were notable in commercial radio in featuring a live interracial cast singing together.
+Immediately after the attack on Pearl Harbor, Lomax called upon colleagues and friends from across the country to capture immediate “man-in-the-street” reactions to the bombing, which were broadcast on the ground-breaking show, People Speak to the President. He was one of the first, if not the first American broadcaster to employ this now common technique. Some sixty years later, following the tragedy of 9/11, the American Folklife Center of the Library of Congress sent out a similar appeal, commemorated in a special exhibit, now online. 
+During World War II, as an employee of the Office of War Information, Lomax collaborated with the BBC on Douglas Geoffrey Bridson’s program, Transatlantic Call: People to People, which featured man on the street interviews on both sides of the Atlantic from diverse regions of Britain and the US. The brilliant broadcaster Norman Corwin was originally picked to handle the American end of the program but withdrew after three programs due to sickness. In his memoir, Prospero and Ariel: The Rise and Fall of Radio (London: Victor Golancz, 1971), Bridson writes that CBS was at first hard put to find Corwin’s replacement but found him in Alan Lomax, “one of the few people in America who had spent his life recording actuality speakers (or rather singers) all over the States. . . . In the first of his Transatlantic Call productions, American actuality came alive: he spoke the same language and sang the same songs as Americans everywhere. More to the point, he was able to help them to speak that language into a microphone and to get the full flavor of their characters across. The shows that he handled came over with the same American impress as the prose of Thomas Wolfe or the poetry of Whitman . . . . I never knew any American who more fully embodied the virtues — and the more engaging vices — of all his countrymen” (Bridson, 1971, pp. 101–102). 
+In 1944, Bridson conceived of a series of ballad operas with folk music, “much in the eighteenth-century tradition of John Gay and Henry Carey,” as a way to promote cultural and interracial friendship between the peoples of Britain and the United States. They were broadcast by the BBC Home Service (union disputes prevented their being heard stateside). The first of these, The Man Who Went to War, was written by Langston Hughes and starred Canada Lee, Paul Robeson, and Ethel Waters. Alan Lomax helped select the music. Bridson described this as one of the most popular programs he ever had on the air, “being heard by millions on its first broadcast alone” (Bridson, 1971, p. 111). Sadly, the glass masters for the program were accidentally broken before they could be preserved on tape. Lomax also chose the music for and performed in two subsequent folk song ballad opera broadcasts scripted by his wife, Elizabeth Lyttleton Harold: The Martins and the Coys and The Chisholm Trail.
+During the nineteen-fifties Lomax worked extensively for the BBC, familiarizing British audiences with the folk music of America, Ireland, Britain, Spain, Italy and other parts of the world. He was heard on the BBC once more in 1966 when he and Guy Carawan did two shows — The Folk Song Army and Songs of Protest — for Bridson’s series America Since the Bomb.
+The Alan Lomax Archive Collection at the Library of Congress and the ACE archive contain scripts, playlists, and correspondence connected with many of these radio shows (as well as of television shows produced for Grenada TV that aired in 1956). A number of them were also recorded on audio tape and are being made available for streaming in the catalog of this website. </p>
+	    	</div>
+			<div class="col-md-1"></div>
+		</div>
+	</body>
+	<script>
+		$('html').on("click","#home_button", function(){
+			$(location).attr("href","/index");
+		});
 
-	          <div data-ex-role="view" data-ex-view-class="Tabular" data-ex-label="Debug" data-ex-columns=".label,.namefirst,.namelast,.setting,.ppl,.sessionname,.sessionnotes,.startdate,.collection,.latlng" data-ex-column-labels="Clip Name,First Name,Last Name,Setting,City,Session Name,Session Notes,Date,Name"></div>
+		$('html').on("click","#songs_button", function(){
+			$(location).attr("href","/songs_page");
+		});
 
-	          <div data-ex-role="view" data-ex-view-class="Tile" data-ex-orders=".label,.namefirst,.namelast,.setting,.ppl,.sessionname,.sessionnotes,.startdate,.collection" data-ex-paginate="true" data-ex-pagesize="10"></div>
+		$('html').on("click","#shows_button", function(){
+			$(location).attr("href","/shows_page");
+		});
 
-
-	          <div data-ex-role="view" data-ex-view-class="Map" data-ex-latlng=".latlng" data-ex-center="36.1627, -86.7816" data-ex-zoom="5" data-ex-map-height="610" data-show-header="false" data-ex-latlngOrder="lnglat">
-        	 	<div data-ex-role="lens">
-	            	<span data-ex-content=".setting"></span> ... <span data-ex-content=".namefirst"></span> <span data-ex-content=".namelast"></span> ... <span data-ex-content=".sessionname"></span> ... <span data-ex-content=".sessionnotes"></span>
-	            </div>
-
-	        </div>
-	      </div>
-	      <div class="col-md-1"></div>
-	    </div>
-
-
-  </body>
-  <script>
-
-  </script> 
+		$('html').on("click","#participants_button", function(){
+			$(location).attr("href","/participants_page");
+		});
+	</script>
 </html>

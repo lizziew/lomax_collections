@@ -1,15 +1,15 @@
 import csv
+import dateutil.parser as parser
 
-with open('/Users/elizabethwei/code/exhibit_lomax/public/javascripts/input.csv','r') as csvinput:
-    with open('/Users/elizabethwei/code/exhibit_lomax/public/javascripts/output.csv', 'w') as csvoutput:
+with open('./final.csv','r') as csvinput:
+    with open('./output.csv', 'w') as csvoutput:
         writer = csv.writer(csvoutput, lineterminator='\n')
         reader = csv.reader(csvinput)
 
         all = []
         row = next(reader)
-        # row.append('latlng')
-        # all.append(row)
-
+        row.append('timelinedate')
+        all.append(row)
         # for row in reader:
         #     if row[4]=="New Orleans": 
         #         row.append("29.9511, -90.0715")
@@ -31,4 +31,21 @@ with open('/Users/elizabethwei/code/exhibit_lomax/public/javascripts/input.csv',
         #         row.append("34.4371, -89.9159"); 
         #     all.append(row)
 
+        for row in reader:
+        	if len(row) <= 5:
+        		continue 
+        	text = row[5]
+        	if text[0:2]=="00":
+        		text = "01-01-" + text[6:10]
+    		date = (parser.parse(text))
+    		row.append(date.isoformat()); 
+        	all.append(row)
+
         writer.writerows(all)
+
+
+
+# text = 'Thu, 16 Dec 2010 12:14:05 +0000'
+# date = (parser.parse(text))
+# print(date.isoformat())
+# 2010-12-16T12:14:05+00:00
