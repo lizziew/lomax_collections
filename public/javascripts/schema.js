@@ -24,9 +24,11 @@
             "valueType": "number"
         },
         "topic": {
+            "label": "alsdfjaldjflkajdfljaldfjlk",
             "valueType": "text"
         },
         "showtitle": {
+            "label": "asdfasdf ",
             "valueType": "text"
         },
         "startdate": {
